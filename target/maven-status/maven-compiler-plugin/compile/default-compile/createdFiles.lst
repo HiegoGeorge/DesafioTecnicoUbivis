@@ -1,0 +1,7 @@
+com\example\testetecnico\entities\ParadaMaquina.class
+com\example\testetecnico\form\ParadaMaquinaForm.class
+com\example\testetecnico\rest\ParadaMaquinaResource.class
+com\example\testetecnico\service\ParadaMaquinaService.class
+com\example\testetecnico\swagger\SwaggerDoc.class
+com\example\testetecnico\TesteTecnico1Application.class
+com\example\testetecnico\repository\ParadaMaquinaRepository.class
