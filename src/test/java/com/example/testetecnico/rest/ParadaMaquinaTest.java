@@ -76,7 +76,7 @@ public class ParadaMaquinaTest extends AbstractTest{
 
 		int dataBaseSizeBeforeDelete = paradaMaquinaRepository.findAll().size();
 		//realiza o delete
-		this.mockMvc.perform(delete("/machine-halt"))
+		this.mockMvc.perform(delete("/machine-halt/all"))
 		.andExpect(status().isNoContent());
 
 		//valida se a base esta vazia

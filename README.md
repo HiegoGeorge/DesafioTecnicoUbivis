@@ -5,14 +5,14 @@
 * [SpringBoot](#badges)
 
 ## Pré-requisitos
-* [Java 8 SDK ou Superior](#Título-e-Imagem-de-capa)
+* [Java 11 ](#Título-e-Imagem-de-capa)
 * [Maven 4.0.0](#Título-e-Imagem-de-capa)
 
 ## Build and Run
 
 1. Clone o repositório
 
-    ``` git clone https://github.com/HiegoGeorge/Desafio```
+    ``` git clone https://github.com/HiegoGeorge/DesafioTecnicoUbivis.git```
  
  2. Depois que realizar o clone, na sua IDE execute os comandos
 

@@ -72,7 +72,7 @@ public class ParadaMaquinaResource {
 
 
 	//Remove todas as entradas de paradas
-	@DeleteMapping("/machine-halt")
+	@DeleteMapping("/machine-halt/all")
 	public ResponseEntity<Void> deleteParada(){
 		paradaMaquinaService.delete();
 		return ResponseEntity.noContent().build();
