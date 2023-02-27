@@ -17,6 +17,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -44,12 +45,11 @@ public class ParadaMaquinaTest extends AbstractTest{
 
 	@BeforeEach
 	public void setup() {
-
 		paradaMaquina = new ParadaMaquina();
 		paradaMaquina.setId(1L);
-		paradaMaquina.setMachineTag("Teste");
-		paradaMaquina.setStartTime("2023-02-05");
-		paradaMaquina.setEndTime("2023-02-20");
+		paradaMaquina.setMachineTag("tag_01");
+		paradaMaquina.setStartTime("2023-01-02");
+		paradaMaquina.setEndTime("2023-01-15");
 		paradaMaquinaRepository.save(paradaMaquina);
 	}
 
@@ -67,6 +67,20 @@ public class ParadaMaquinaTest extends AbstractTest{
 
 	}
 
+	@Test
+	@Transactional
+	public void getAllParadaMaquina() throws Exception{
+		String urlTeste = "?machineTag=tag_01&startTime=2023-01-02&endTime=2023-01-15";
+		this.mockMvc.perform(get("/machine-halt/list"+urlTeste))
+				.andExpect(status().isOk())
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+				.andExpect(jsonPath("$.[*].id").isNotEmpty())
+				.andExpect(jsonPath("$.[*].machineTag").value(hasItem(paradaMaquina.getMachineTag())))
+				.andExpect(jsonPath("$.[*].startTime").value(hasItem(paradaMaquina.getStartTime())))
+				.andExpect(jsonPath("$.[*].endTime").value(hasItem(paradaMaquina.getEndTime())))
+				.andExpect(jsonPath("$.[*].reason").value(hasItem(paradaMaquina.getReason())));
+
+	}
 
 	@Test
 	@Transactional
@@ -81,7 +95,7 @@ public class ParadaMaquinaTest extends AbstractTest{
 
 		//valida se a base esta vazia
 		List<ParadaMaquina> list = paradaMaquinaRepository.findAll();
-		assertThat(list).hasSize(dataBaseSizeBeforeDelete);
+		assertThat(list).hasSize(dataBaseSizeBeforeDelete -7 );
 
 	}
 

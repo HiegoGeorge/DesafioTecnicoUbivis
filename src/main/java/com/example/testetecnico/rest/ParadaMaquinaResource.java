@@ -77,7 +77,14 @@ public class ParadaMaquinaResource {
 		paradaMaquinaService.delete();
 		return ResponseEntity.noContent().build();
 	}
-		
+
+
+
+	@GetMapping("/machine-halt/null")
+	public List<ParadaMaquina> getParadaMaquinaIsNull(){
+		List<ParadaMaquina> result = paradaMaquinaService.listarParadasIsNull();
+		return result;
+	}
 
 	
 }
